@@ -18,7 +18,19 @@ class Trie {
     }
     insert(word) {
         // TODO Insert word symbol by symbol
+        let node = this.root;
 
+        for (let i = 0; i < word.length; i++) {
+            if (!node.children[word[i]]) {
+                node.children[word[i]] = new TrieNode(word[i]);
+            }
+
+            node = node.children[word[i]];
+
+            if (i == word.length - 1) {
+                node.isWord = true;
+            }
+        }
     }
 }
 
